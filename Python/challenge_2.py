@@ -26,11 +26,29 @@ P.S.: don't forget to iterate until you have nothing to remove...
 import unittest
 
 
-def directions_solution(directions: list[str]) -> list[str]:
+def directions_solution(directions):
     """
     Returns simplified directions
     """
-    return []
+    ret_list = []
+    index = 0
+    while index < len(directions):
+        if index < len(directions) - 1:
+            if directions[index] == "NORTH" and directions[index + 1] == "SOUTH":
+                index += 2
+                continue
+            if directions[index] == "SOUTH" and directions[index + 1] == "NORTH":
+                index += 2
+                continue
+            if directions[index] == "WEST" and directions[index + 1] == "EAST":
+                index += 2
+                continue
+            if directions[index] == "EAST" and directions[index + 1] == "WEST":
+                index += 2
+                continue
+        ret_list.append(directions[index])
+        index += 1
+    return ret_list
 
 
 class DirectionsTestCase(unittest.TestCase):

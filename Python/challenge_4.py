@@ -35,11 +35,32 @@ No external dependencies!
 import unittest
 
 
-def fibonacci_solution(number: int) -> list[int, bool]:
+def fibonacci_solution(number):
     """
     Returns Fibonacci product combination
     """
-    return [0, 1, False]
+    fib_numbers = []
+    with open("fib_numbers") as f:
+        for line in f:
+            fib_numbers.extend(  # Append the list of numbers to the result array
+                [int(item)  # Convert each number to an integer
+                 for item in line.split()  # Split each line of whitespace
+                 ])
+    index = 0
+    while index < len(fib_numbers) - 1:
+        fib_nasobok = fib_numbers[index] * fib_numbers[index + 1]
+        if fib_nasobok == number:
+            return [fib_numbers[index], fib_numbers[index + 1], True]
+        if fib_nasobok > number:
+            return [fib_numbers[index], fib_numbers[index + 1], False]
+        if index == len(fib_numbers) - 2:
+            fib_numbers.append(calculate_next_fib(fib_numbers[index], fib_numbers[index + 1]))
+        index += 1
+    return [-1, -1, False]
+
+
+def calculate_next_fib(fib1, fib2):
+    return fib1 + fib2
 
 
 class FibonacciTestCase(unittest.TestCase):

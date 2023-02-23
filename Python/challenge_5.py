@@ -22,8 +22,21 @@ def persistence_solution(number: int) -> int:
     """
     Returns persistence of a number
     """
-    return 0
+    count = 0
 
+    return recursive_multiplication(number, count)
+
+def recursive_multiplication(number, count):
+    if number < 10:
+        return count
+    list_of_numbers = [int(d) for d in str(number)]
+    multiplication = 1
+    if 0 in list_of_numbers:
+        return count+1
+    for num in list_of_numbers:
+        multiplication *= num
+    count += 1
+    return recursive_multiplication(multiplication, count)
 
 class PersistenceTestCase(unittest.TestCase):
     """
@@ -31,9 +44,6 @@ class PersistenceTestCase(unittest.TestCase):
     """
 
     def test(self):
-        """
-        Table-driven tests
-        """
         testcases = [
             {
                 "number": 5,
@@ -43,7 +53,22 @@ class PersistenceTestCase(unittest.TestCase):
                 "number": 999,
                 "res": 4,
             },
+            {
+                "number": 10,
+                "res": 1,
+            },
+            {
+                "number": 10000000,
+                "res": 1,
+            },
+            {
+                "number": 143856743785642387568462573427547832,
+                "res": 2,
+            }
         ]
+        """
+        Table-driven tests
+        """
 
         for case in testcases:
             res = persistence_solution(case["number"])
