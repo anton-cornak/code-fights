@@ -12,6 +12,9 @@ No external dependencies!
 P.S.: you cant leverage all benefits of classes. ;)
 */
 
+using System.Linq;
+using System.Text;
+
 namespace CodeFights
 {
     using NUnit.Framework;
@@ -68,20 +71,77 @@ namespace CodeFights
             Assert.AreEqual(3999, ConvertFromRoman("MMMCMXCIX"), "'MMMCMXCIX' should convert to 3999");
         }
 
+        private static string _placeholderToRoman = "{0} should convert to {1}";
         public static string ConvertToRoman(int n)
         {
-            /*
-             * Integers to roman numerals
-             */
-            return String.Empty;
+            var result = new StringBuilder();
+            Enumerable.Range(0, n / 1000).Select(x => x).ToList().ForEach(x => result.Append("M"));
+            n = n % 1000;
+            n = HandleCase(n, result, 900, "CM");
+            n = HandleCase(n, result, 500, "D");
+            n = HandleCase(n, result, 400, "CD");
+            Enumerable.Range(0, n / 100).Select(x => x).ToList().ForEach(x => result.Append("C"));
+            n = n % 100;
+            n = HandleCase(n, result, 90, "XC");
+            n = HandleCase(n, result, 50, "L");
+            n = HandleCase(n, result, 40, "XL");
+            Enumerable.Range(0, n / 10).Select(x => x).ToList().ForEach(x => result.Append("X"));
+            n = n % 10;
+            n = HandleCase(n, result, 9, "IX");
+            n = HandleCase(n, result, 5, "V");
+            n = HandleCase(n, result, 4, "IV");
+            Enumerable.Range(0, n / 1).Select(x => x).ToList().ForEach(x => result.Append("I"));
+
+            return result.ToString();
+        }
+
+        private static int HandleCase(int n, StringBuilder result, int limit, string input)
+        {
+            if (n >= limit)
+            {
+                result.Append(input);
+                n = n - limit;
+            }
+            return n;
         }
 
         public static int ConvertFromRoman(string romanNumeral)
         {
-            /*
-             * roman numerals to integers
-             */
-            return 0;
+            var result = romanNumeral
+                .Replace("CM", "A")
+                .Replace("CD", "B")
+                .Replace("XC", "W")
+                .Replace("XL", "Q")
+                .Replace("IX", "Y")
+                .Replace("IV", "Z");
+
+            int sum = 0;
+            foreach (var character in result)
+            {
+                sum += GetFromChar(character);
+            }
+
+            return sum;
+        }
+
+        private static int GetFromChar(char c)
+        {
+            return c switch
+            {
+                'M' => 1000,
+                'D' => 500,
+                'C' => 100,
+                'L' => 50,
+                'X' => 10,
+                'V' => 5,
+                'I' => 1,
+                'A' => 900,
+                'B' => 400,
+                'W' => 90,
+                'Q' => 40,
+                'Y' => 9,
+                'Z' => 4,
+            };
         }
     }
 }

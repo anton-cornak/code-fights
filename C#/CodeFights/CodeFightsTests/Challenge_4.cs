@@ -61,10 +61,23 @@ namespace CodeFights
 
         public static ulong[] FibonacciSolution(ulong number)
         {
-            /*
-             *  Returns Fibonacci product combination
-             */
-            return Array.Empty<ulong>();
+            ulong min = 0;
+            ulong max = 1;
+
+            while (min * max < number)
+            {
+                ulong temp = max;
+                max = min + max;
+                min = temp;
+            }
+                
+            return new ulong[] { min, max, 
+                Multiply(min,max) == number ? (ulong)1 : 0};
+        }
+
+        private static ulong Multiply(ulong x, ulong y)
+        {
+            return x * y;
         }
     }
 }
