@@ -33,12 +33,15 @@ Feel free to add as many unit tests as you want.
 No external dependencies!
 """
 import unittest
+from typing import List
 
 
-def fibonacci_solution(number: int) -> list[int, bool]:
+def fibonacci_solution(number: int) -> List[int, bool]:
+
     """
     Returns Fibonacci product combination
     """
+
     return [0, 1, False]
 
 

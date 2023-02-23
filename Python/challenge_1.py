@@ -18,7 +18,12 @@ def alphabet_solution(text: str) -> str:
     """
     Returns letter alphabet position
     """
-    return ""
+    res = ""
+    for char in text.lower():
+        if char.isalpha():
+            res += str(ord(char) - 96) + " "
+    res = res[:-1]
+    return res
 
 
 class AlphabetTestCase(unittest.TestCase):
@@ -51,4 +56,5 @@ class AlphabetTestCase(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    # alphabet_solution("abcd")
     unittest.main()

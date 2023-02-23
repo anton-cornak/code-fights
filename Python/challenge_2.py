@@ -8,10 +8,10 @@ Naturally, you want to get out of the woods as soon as possible.
 
 But then you remembered elementary school:
 If you travel North and then IMMEDIATELY back South, you'll end up exactly where you started.
-Same applies to the West/East combination. 
+Same applies to the West/East combination.
 
 Your task is to simplify directions and remove all consecutive pairs that cancel each other out.
-Example: 
+Example:
 
 ["NORTH", "SOUTH", "WEST", "EAST"] is basically just [], right?
 ["NORTH", "SOUTH", "SOUTH", "EAST"] = ["SOUTH", EAST"]
@@ -24,13 +24,41 @@ No external dependencies!
 P.S.: don't forget to iterate until you have nothing to remove...
 """
 import unittest
+from typing import List
 
 
-def directions_solution(directions: list[str]) -> list[str]:
+def directions_solution(directions: List[str]) -> List[str]:
     """
     Returns simplified directions
     """
-    return []
+    out = []
+    n,s,e,w = 0,0,0,0
+    for direction in directions:
+        if direction == "NORTH":
+            n += 1
+            s -= 1
+        elif direction == "SOUTH":
+            s += 1
+            n -= 1
+        elif direction == "EAST":
+            e += 1
+            w -= 1
+        elif direction == "WEST":
+            w += 1
+            e -= 1
+    while n > 0:
+        out.append("NORTH")
+        n -= 1
+    while s > 0:
+        out.append("SOUTH")
+        s -= 1
+    while e > 0:
+        out.append("EAST")
+        e -= 1
+    while w > 0:
+        out.append("WEST")
+        w -= 1
+    return out
 
 
 class DirectionsTestCase(unittest.TestCase):

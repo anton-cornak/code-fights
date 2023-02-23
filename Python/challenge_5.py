@@ -22,7 +22,16 @@ def persistence_solution(number: int) -> int:
     """
     Returns persistence of a number
     """
-    return 0
+    count = 0
+    if number < 10:
+        return count
+    while number > 9:
+        num = [int(i) for i in str(number)]
+        number = num[0]
+        for i in num[1:]:
+            number *= i
+        count += 1
+    return count
 
 
 class PersistenceTestCase(unittest.TestCase):
@@ -55,4 +64,5 @@ class PersistenceTestCase(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    # persistence_solution(963)
     unittest.main()

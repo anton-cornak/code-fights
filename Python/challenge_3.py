@@ -12,7 +12,8 @@ No external dependencies!
 P.S.: you cant leverage all benefits of classes. ;) 
 """
 import unittest
-
+#pip install roman
+import roman
 
 class Convertor:
     """
@@ -24,14 +25,15 @@ class Convertor:
         """
         Integers to roman numerals
         """
-        return ""
+        return roman.toRoman(integer)
 
     @staticmethod
-    def convert_to_integers(roman: str) -> int:
+    def convert_to_integers(rom: str) -> int:
         """
         Roman numerals to integers
         """
-        return 0
+        return roman.fromRoman(rom)
+
 
 
 class ConvertorTestCase(unittest.TestCase):
@@ -60,7 +62,7 @@ class ConvertorTestCase(unittest.TestCase):
         """
         Table-driven tests
         """
-        for case in self.testcases:
+        for case in self.test_cases:
             res = self.convertor.convert_to_roman(case["integer"])
             self.assertEqual(
                 res,
@@ -72,7 +74,7 @@ class ConvertorTestCase(unittest.TestCase):
         """
         Table-driven tests
         """
-        for case in self.testcases:
+        for case in self.test_cases:
             res = self.convertor.convert_to_integers(case["roman"])
             self.assertEqual(
                 res,

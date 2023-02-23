@@ -17,13 +17,32 @@ Feel free to add as many unit tests as you want.
 No external dependencies!
 """
 import unittest
+from typing import List
 
 
-def range_solution(numbers: list[int]) -> str:
+def range_solution(numbers: List[int]) -> str:
     """
     Returns simplified range
     """
-    return ""
+    result = []
+    i = 0
+
+    while i < len(numbers):
+        start = numbers[i]
+        end = start
+
+        while i + 1 < len(numbers) and numbers[i + 1] == end + 1:
+            end = numbers[i + 1]
+            i += 1
+
+        if start == end:
+            result.append(str(start))
+        else:
+            result.append(f"{start}-{end}")
+
+        i += 1
+
+    return ",".join(result)
 
 
 class RangeTestCase(unittest.TestCase):
@@ -85,4 +104,5 @@ class RangeTestCase(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    # print(range_solution([1, 2, 3, 5, 6, 7, 8, 10]))
     unittest.main()
