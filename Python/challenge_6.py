@@ -19,11 +19,35 @@ No external dependencies!
 import unittest
 
 
-def range_solution(numbers: list[int]) -> str:
+def range_solution(numbers):
     """
     Returns simplified range
     """
-    return ""
+    return_list = []
+
+    last_num = numbers[0]
+    return_list.append({"min": numbers[0], "max": numbers[0]})
+    for num in numbers:
+        if num == last_num + 1:
+            return_list[len(return_list)-1]["max"] = num
+            last_num = num
+            continue
+        if num >= last_num + 1:
+            last_num = num
+            return_list.append({"min": num, "max": num})
+
+    ret_str = ""
+    for ret in return_list:
+        if ret["max"] - ret["min"] >= 2:
+            ret_str += "" + str(ret['min']) + "-" + str(ret["max"]) + ","
+        else:
+            if ret["max"] != ret["min"]:
+                ret_str += str(ret["min"]) + "," + str(ret["max"]) + ","
+            else:
+                ret_str += str(ret["max"]) + ","
+
+    ret_str = ret_str[:len(ret_str)-1]
+    return ret_str
 
 
 class RangeTestCase(unittest.TestCase):

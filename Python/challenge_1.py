@@ -12,13 +12,21 @@ Feel free to add as many unit tests as you want.
 No external dependencies!
 """
 import unittest
+import string
 
 
 def alphabet_solution(text: str) -> str:
     """
     Returns letter alphabet position
     """
-    return ""
+    ret_str = ""
+    for c in text:
+
+        c = c.lower()
+        if c in string.ascii_lowercase:
+            index = string.ascii_lowercase.index(c)
+            ret_str += str(index+1) + " "
+    return ret_str.strip()
 
 
 class AlphabetTestCase(unittest.TestCase):
