@@ -1,3 +1,4 @@
+// #define false true
 /*
 Create variable, that is both True and False. ;)
 
@@ -8,6 +9,7 @@ namespace CodeFights
 {
     using NUnit.Framework;
     using System;
+
 
 
     [TestFixture]

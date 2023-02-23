@@ -1,0 +1,19 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\frno1\AppData\Local\JetBrains\Rider2022.1\resharper-host\temp\Rider\vAny\CoverageData\_CodeFights.1588166480\Snapshot\snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ab4d47fe_002D2b12_002D4cbc_002Da115_002D833283857fd5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AlphabetTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0908C60F-F712-4E84-9FED-FC222B22EC2E::net6.0::CodeFights.Challenge_1.AlphabetTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b4230b09_002D8d6f_002D421d_002Db6b5_002D6575d5af3b1e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="AlphabetTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0908C60F-F712-4E84-9FED-FC222B22EC2E::net6.0::CodeFights.Challenge_1.AlphabetTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0908C60F-F712-4E84-9FED-FC222B22EC2E::net6.0::CodeFights.Challenge_2.Test1&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0908C60F-F712-4E84-9FED-FC222B22EC2E::net6.0::CodeFights.Challenge_3.TestToRoman&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0908C60F-F712-4E84-9FED-FC222B22EC2E::net6.0::CodeFights.Challenge_3.TestFromRoman&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0908C60F-F712-4E84-9FED-FC222B22EC2E::net6.0::CodeFights.Challenge_Bonus.SchroedingerTestCase&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0908C60F-F712-4E84-9FED-FC222B22EC2E::net6.0::CodeFights.Challenge_4.FibonacciTestCase&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0908C60F-F712-4E84-9FED-FC222B22EC2E::net6.0::CodeFights.Challenge_5.PersistenceTestCase&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0908C60F-F712-4E84-9FED-FC222B22EC2E::net6.0::CodeFights.Challenge_6.RangeTestCase&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

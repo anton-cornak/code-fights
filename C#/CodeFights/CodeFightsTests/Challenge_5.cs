@@ -5,7 +5,7 @@ Long story short: number of times you need to multiply the digits in a given num
 
 num = 10 
 res = 1
-explanation: 1•0 = 0, which is a single digit number
+explanation: 1ï¿½0 = 0, which is a single digit number
 
 num = 963
 res = 3
@@ -34,11 +34,23 @@ namespace CodeFights
 
         public static int PersistenceSolution(long n)
         {
-            /*
-             * Returns persistence of a number
-             */
+            int sum = 0;
+            int index = 0;
 
-            return 0;
+            while (n > 9)
+            {
+                var length = n.ToString().Length;
+                var data = Enumerable
+                    .Range(0, length)
+                    .Select(x => n % Math.Pow(10, length - x) / Math.Pow(10, length - x - 1))
+                    .Select(x => (int)x);
+
+                n = data.Aggregate(1, (a, b) => a * b);
+
+                index++;
+            }
+
+            return index;
         }
     }
 }
