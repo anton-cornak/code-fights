@@ -24,6 +24,8 @@ No external dependencies!
 P.S.: don't forget to iterate until you have nothing to remove...
 */
 
+using System.Linq;
+
 namespace CodeFights
 {
     using NUnit.Framework;
@@ -54,11 +56,23 @@ namespace CodeFights
 
         public static String[] DirectionsSolution(String[] arr)
         {
-            /*
-             * Returns simplified directions
-             */
+            var westEast = arr.Select(x => x == "WEST" ? 1 : (x == "EAST" ? -1 : 0));
+            var westEastResult = Enumerable.Sum(westEast);
+            
+            var northSouth = arr.Select(x => x == "NORTH" ? 1 : (x == "SOUTH" ? -1 : 0));
+            var northSouthResult = Enumerable.Sum(northSouth);
 
-            return Array.Empty<string>();
+            var result = new List<string>();
+            if (northSouthResult != 0)
+            {
+                result.Add(northSouthResult > 0 ? "NORTH" : "WEST");
+            }
+            if (westEastResult != 0)
+            {
+                result.Add(westEastResult > 0 ? "WEST" : "EAST");
+            }
+
+            return result.ToArray();
         }
     }
 }

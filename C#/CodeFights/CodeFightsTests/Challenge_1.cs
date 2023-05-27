@@ -12,6 +12,8 @@ Feel free to add as many unit tests as you want.
 No external dependencies!
 */
 
+using System.Linq;
+
 namespace CodeFights
 {
     using NUnit.Framework;
@@ -21,13 +23,22 @@ namespace CodeFights
     [TestFixture]
     public class Challenge_1
     {
+        static string alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            
         public static string AlphabetSolution(string text)
         {
-            /*
-             Returns letter alphabet position
-            */
+            text = text.Replace(" ", "").Replace("!", "");
 
-            return String.Empty;
+            var parsed = Enumerable
+                .Range(0, text.Length)
+                .Select(index => GetChar(text, index));
+            
+            return string.Join(" ", parsed);
+        }
+
+        private static int GetChar(string text, int index)
+        {
+            return alpha.IndexOf(text[index].ToString().ToUpperInvariant()) + 1;
         }
 
         [Test]

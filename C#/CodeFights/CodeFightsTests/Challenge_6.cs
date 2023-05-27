@@ -17,6 +17,10 @@ Feel free to add as many unit tests as you want.
 No external dependencies!
 */
 
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+
 namespace CodeFights
 {
     using NUnit.Framework;
@@ -44,10 +48,30 @@ namespace CodeFights
 
         public static string RangeSolution(int[] args)
         {
-            /*
-             * Returns simplified range
-             */
-            return String.Empty;
+            var result = new List<string> { };
+
+            for (int index = 0; index < args.Length; index++)
+            {
+                if (index == 0)
+                {
+                    result.Add(args[index].ToString());
+                }
+                else if (args[index] == args[index - 1] + 1 // one more than last one
+                    && index < args.Length - 1 // not last
+                    && args[index] + 1 == args[index + 1]) // one less then next one
+                {
+                    if(result.Last() != "-") // one less than next one 
+                    {
+                        result.Add("-");
+                    }
+                }
+                else
+                {
+                    result.Add(args[index].ToString());
+                }
+            }
+
+            return string.Join(",", result).Replace(",-,", "-");
         }
     }
 }
